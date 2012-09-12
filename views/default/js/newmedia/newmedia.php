@@ -14,7 +14,31 @@ elgg.provide('elgg.newmedia');
 
 // Init function
 elgg.newmedia.init = function () {
-	//console.log('NEW MEDIA');
+	// Ajax load the portfolio content
+	elgg.newmedia.loadDashboard();
+}
+
+/**	
+ * Load dashboard content 
+ */
+elgg.newmedia.loadDashboard = function() {
+	var $container = $('#newmedia-dashboard-container');
+
+	// Don't load unless we have the container
+	if ($container.length) {
+		var user_guid = $('input#newmedia-dashboard-user').val();
+		var url = elgg.get_site_url() + 'ajax/view/newmedia/dashboard/content'
+
+
+		elgg.get(url, {
+			data: {
+				user_guid: user_guid
+			},
+			success: function(data){
+				$container.html(data);
+			}
+		});
+	}
 }
 
 elgg.register_hook_handler('init', 'system', elgg.newmedia.init);

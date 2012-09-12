@@ -16,7 +16,10 @@ $english = array(
 	// Page titles
 
 	// Labels
-	
+	'newmedia:label:tagsettings' => 'Dashboard Tags (Title - Tag)',
+	'newmedia:label:subtypesettings' => 'Dashboard Subtypes (One per line)',
+	'newmedia:label:dashboard' => '%s\'s New Media Dashboard',
+ 	
 	// Achievement subtypes
 	
 	// Achievements
