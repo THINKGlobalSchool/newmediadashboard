@@ -27,8 +27,16 @@ function newmedia_init() {
 	elgg_register_simplecache_view('js/newmedia/newmedia');	
 	elgg_register_js('elgg.newmedia', $nm_js);
 	
-	// Add a new tab to the tabbed profile
-	elgg_register_plugin_hook_handler('tabs', 'profile', 'newmedia_profile_tab_hander');
+	// Check if we've configured the plugin
+	if (elgg_get_plugin_setting('newmedia_tags', 'newmedia')) {
+		// Add a new tab to the tabbed profile	
+		elgg_register_plugin_hook_handler('tabs', 'profile', 'newmedia_profile_tab_hander');
+	} else {
+		// Add admin message
+		elgg_add_admin_notice('newmedia_not_configured', elgg_echo('newmedia:message:noconfig'));
+	}
+	
+	
 	
 	// Ajax whitelist
 	elgg_register_ajax_view('newmedia/dashboard/content');

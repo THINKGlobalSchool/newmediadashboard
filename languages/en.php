@@ -27,6 +27,7 @@ $english = array(
 	// River
 
 	// Messages
+	'newmedia:message:noconfig' => 'New Media Dashboard is not configured!',
 
 	// Other content
 );
