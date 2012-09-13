@@ -23,6 +23,13 @@ $newmedia_subtypes_input = elgg_view('input/plaintext', array(
 	'value' => $vars['entity']->newmedia_subtypes)
 );
 
+// Subtypes input (Enter one per line)
+$newmedia_terms_label = elgg_echo('newmedia:label:termsettings');
+$newmedia_terms_input = elgg_view('input/plaintext', array(
+	'name' => 'params[newmedia_terms]', 
+	'value' => $vars['entity']->newmedia_terms)
+);
+
 $content = <<<HTML
 	<br />
 	<div>
@@ -32,6 +39,10 @@ $content = <<<HTML
 	<div>
 		<label>$newmedia_subtypes_label</label><br />
 		$newmedia_subtypes_input
+	</div>
+	<div>
+		<label>$newmedia_terms_label</label><br />
+		$newmedia_terms_input
 	</div>
 HTML;
 
