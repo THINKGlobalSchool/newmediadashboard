@@ -21,6 +21,7 @@ $english = array(
 	'newmedia:label:termsettings' => 'Dashboard Terms (Start date - End date, ie: 09/01/2012 - 01/01/2013)',
 	'newmedia:label:dashboard' => '%s\'s New Media Dashboard',
 	'newmedia:label:termselect' => 'Select Term',
+	'newmedia:label:roles' => 'Limit dashboard to these roles',
  	
 	// Achievement subtypes
 	

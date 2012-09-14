@@ -36,7 +36,9 @@ function newmedia_init() {
 		elgg_add_admin_notice('newmedia_not_configured', elgg_echo('newmedia:message:noconfig'));
 	}
 	
-	
+	// Actions
+	$action_base = elgg_get_plugins_path() . 'newmedia/actions/newmedia';
+	elgg_register_action("newmedia/settings/save", "$action_base/settings/save.php");
 	
 	// Ajax whitelist
 	elgg_register_ajax_view('newmedia/dashboard/content');
@@ -46,6 +48,19 @@ function newmedia_init() {
  * Handler to add a new media tab to the tabbed profile 
  */
 function newmedia_profile_tab_hander($hook, $type, $value, $params) {
-	$value[] = 'newmedia';
+	$user = $params['user'];
+
+	$roles = json_decode(elgg_get_plugin_setting('dashboard_roles', 'newmedia'));
+
+	foreach ($roles as $role) {
+		$entity = get_entity($role);
+		
+		// If we have a valid role and the user is a member of at least one of the roles
+		if (elgg_instanceof($entity, 'object', 'role') && $entity->isMember($user)) {
+			$value[] = 'newmedia'; // Add tab
+			break;
+		}
+	}
+
 	return $value;
 }

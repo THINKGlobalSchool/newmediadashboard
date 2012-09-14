@@ -30,6 +30,12 @@ $newmedia_terms_input = elgg_view('input/plaintext', array(
 	'value' => $vars['entity']->newmedia_terms)
 );
 
+$roles_input = elgg_view('input/roles', array(
+	'value' => json_decode($vars['entity']->dashboard_roles),
+	'name' => 'params[dashboard_roles]',
+	'label' => elgg_echo('newmedia:label:roles'),
+));
+
 $content = <<<HTML
 	<br />
 	<div>
@@ -43,6 +49,9 @@ $content = <<<HTML
 	<div>
 		<label>$newmedia_terms_label</label><br />
 		$newmedia_terms_input
+	</div>
+	<div>
+		$roles_input
 	</div>
 HTML;
 
