@@ -29,6 +29,8 @@ class NewMediaAchievement09012012_01012013 extends AchievementBase {
 	public function __construct($user = NULL) {
 		parent::__construct($user);
 		
+		$this->type = 'newmedia';
+		
 		$this->tags = array(
 			'spark' => 'Spark',
 			'study' => 'Study',
@@ -56,9 +58,8 @@ class NewMediaAchievement09012012_01012013 extends AchievementBase {
 				$description = elgg_echo('newmedia:achievement:generic_description', array($threshold, $name));
 
 				// Create language strings
-				$english['achievements:' . strtolower($award_name) . ':title'] = $title . " (September - December 2012)";
+				$english['achievements:' . strtolower($award_name) . ':title'] = $title . " (Sep - Dec 2012)";
 				$english['achievements:' . strtolower($award_name) . ':description'] = $description;
-
 			}
 		}
 		

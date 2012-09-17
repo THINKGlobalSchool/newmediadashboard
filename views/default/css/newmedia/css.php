@@ -9,3 +9,9 @@
  * @link http://www.thinkglobalschool.com/
  */
 ?>
+
+hr.newmedia {
+	border-color: #999999;
+	border-style: solid none none;
+	border-width: 1px 0 0;
+}

@@ -22,6 +22,7 @@ $english = array(
 	'newmedia:label:dashboard' => '%s\'s New Media Dashboard',
 	'newmedia:label:termselect' => 'Select Term',
 	'newmedia:label:roles' => 'Limit dashboard to these roles',
+	'newmedia:label:achievements' => 'New Media Achievements',
  	
 	// Achievement subtypes
 	

@@ -57,12 +57,39 @@ $upper_input = elgg_view('input/hidden', array(
 	'value' => ELGG_ENTITIES_ANY_VALUE,
 ));
 
+$achievements_title = elgg_view_title(elgg_echo('newmedia:label:achievements'));
+$achievements = elgg_get_config('achievements');
+
+$new_media_achievements = array();
+
+foreach ($achievements['classes'] as $name => $info) {
+	if ($info['type'] == 'newmedia') {
+		$a = new $name();
+		foreach($a->getAchievementNames() as $a_name) {
+			$new_media_achievements[] = $a_name;
+		}
+	}
+}
+
+$user_achievements = get_user_achievements($page_owner);
+
+$new_media_achievements = array_intersect($new_media_achievements, $user_achievements);
+
+if (!$new_media_achievements || empty($new_media_achievements)) {
+	$achievements_content .= "<label>" . elgg_echo('achievements:label:none') . "</label>";
+} else {
+	foreach ($new_media_achievements as $achievement) {
+		$name = strtolower($achievement);
+		$achievements_content .= elgg_view("achievements/achievement", array('name' => $name, 'view_type' => 'gallery'));
+	}
+}
+
 $content = <<<HTML
 	<div style='float: left;'>
 		$title
 	</div>
 	<div class='clearfix'></div>
-	<hr />
+	<hr class='newmedia' />
 	$user_input
 	<label>$term_label</label>
 	$term_input
@@ -70,6 +97,11 @@ $content = <<<HTML
 	$lower_input
 	$upper_input
 	<div id='newmedia-dashboard-container'></div>
+	<hr class='newmedia' />
+	<div style='clear: both;'>
+		$achievements_title
+		$achievements_content
+	</div>
 HTML;
 
 echo $content;
