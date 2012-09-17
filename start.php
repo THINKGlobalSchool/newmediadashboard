@@ -35,6 +35,8 @@ function newmedia_init() {
 		// Add admin message
 		elgg_add_admin_notice('newmedia_not_configured', elgg_echo('newmedia:message:noconfig'));
 	}
+
+	elgg_register_plugin_hook_handler('get_achievement_class_paths', 'achievement', 'newmedia_achievement_hook');
 	
 	// Actions
 	$action_base = elgg_get_plugins_path() . 'newmedia/actions/newmedia';
@@ -62,5 +64,19 @@ function newmedia_profile_tab_hander($hook, $type, $value, $params) {
 		}
 	}
 
+	return $value;
+}
+
+/**
+ * Register the new media achievements class path
+ *
+ * @param unknown_type $hook
+ * @param unknown_type $type
+ * @param unknown_type $value
+ * @param unknown_type $params
+ * @return unknown
+ */
+function newmedia_achievement_hook($hook, $type, $value, $params) {
+	$value[] = elgg_get_plugins_path() . 'newmedia/classes/';
 	return $value;
 }

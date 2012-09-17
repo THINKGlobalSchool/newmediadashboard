@@ -26,6 +26,8 @@ $english = array(
 	// Achievement subtypes
 	
 	// Achievements
+	'newmedia:achievement:generic_title' => 'Created %s %s items!',
+	'newmedia:achievement:generic_description' => 'You\'ve created %s %s items, way to go!',
 
 	// River
 

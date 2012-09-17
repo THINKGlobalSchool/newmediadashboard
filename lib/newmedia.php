@@ -69,6 +69,12 @@ function newmedia_get_dashboard_terms() {
 		foreach ($terms[$idx] as $key => $date) {
 				$tags[$idx][$key]= trim($date);
 		}
+
+		// Make sure we have valid dates!
+		if (!strtotime($terms[$idx][0]) || !strtotime($terms[$idx][1])) {
+			continue; // Bail if we've got invalid dates in this term
+		}
+
 		$terms_array[] = array(
 			'start' => $terms[$idx][0],
 			'end' => $terms[$idx][1],
