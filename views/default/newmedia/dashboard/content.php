@@ -21,7 +21,7 @@ $tags_array = array();
 
 foreach ($tags as $tag) {
 	$tags_array[] = $tag['tag'];
-	$titles_array[] = $tag['name'];
+	$titles_array[] = $tag['name'] . " (" . $tag['tag'] . ")";
 }
 
 if (elgg_instanceof($user, 'user')) {
