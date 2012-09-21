@@ -63,7 +63,7 @@ $achievements = elgg_get_config('achievements');
 $new_media_achievements = array();
 
 foreach ($achievements['classes'] as $name => $info) {
-	if ($info['type'] == 'newmedia') {
+	if (strstr($name, 'NewMedia')) { // Could use a better way..
 		$a = new $name();
 		foreach($a->getAchievementNames() as $a_name) {
 			$new_media_achievements[] = $a_name;
