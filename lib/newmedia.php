@@ -43,6 +43,10 @@ function newmedia_get_dashboard_tags() {
 function newmedia_get_dashboard_subtypes() {
 	// Get tags from plugin settings
 	$subtypes = elgg_get_plugin_setting('newmedia_subtypes', 'newmedia');
+	
+	if (!$subtypes) {
+		return FALSE;
+	}
 
 	$subtypes = explode("\n", $subtypes);
 	$subtypes_array = array();
